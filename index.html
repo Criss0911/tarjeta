@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌻 Un Mensaje Especial para Ti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fondo suave con resplandor dorado -->
+    <div class="camuflaje-bg"></div>
+    <div class="resplandor"></div>
+    <div class="flotantes-suaves" aria-hidden="true">
+        <span>💛</span><span>✨</span><span>🌻</span><span>🧡</span><span>🤍</span>
+        <span>💛</span><span>🌻</span><span>✨</span><span>🧡</span><span>💫</span>
+    </div>
+
+    <!-- Pantalla 1: Ingreso del nombre -->
+    <div id="pantalla-inicio" class="contenedor activo">
+        <div class="ingreso-simple">
+            <label for="nombreInput">Ingresar el nombre</label>
+            <input
+                type="text"
+                id="nombreInput"
+                maxlength="30"
+                autocomplete="off"
+            >
+            <button onclick="mostrarTarjeta()">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Pantalla 2: Tarjeta con el mensaje -->
+    <div id="pantalla-tarjeta" class="contenedor">
+
+        <!-- Girasoles decorativos flotantes de fondo -->
+        <div class="jardin-fondo">
+            <div class="girasol-deco g1"></div>
+            <div class="girasol-deco g2"></div>
+            <div class="girasol-deco g3"></div>
+            <div class="girasol-deco g4"></div>
+            <div class="girasol-deco g5"></div>
+            <div class="girasol-deco g6"></div>
+        </div>
+
+        <!-- Partículas brillantes -->
+        <div class="particulas">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+        </div>
+
+        <!-- Contenedor de confeti -->
+        <div class="confetti" id="confetti"></div>
+
+        <div class="tarjeta">
+            <div class="cinta-camuflaje"></div>
+
+            <!-- Girasoles en las esquinas -->
+            <div class="esquina-girasol esquina-izq"></div>
+            <div class="esquina-girasol esquina-der"></div>
+
+            <div class="contenido-tarjeta">
+                <div class="chip-fecha"><span class="chip-emoji">🌞</span> 21 · SEP</div>
+
+                <h2 class="titulo-feliz">
+                    <span class="emoji-titulo">🌟</span>
+                    ¡Feliz 21 de Septiembre!
+                    <span class="emoji-titulo">🌟</span>
+                </h2>
+
+                <p class="nombre-destacado" id="nombreMostrado"></p>
+
+                <!-- 🌻 GIRASOL PRINCIPAL ANIMADO (esquivo) -->
+                <div class="girasol-esquivo" id="girasolEsquivo">
+                    <div class="girasol-principal">
+                        <div class="brillo-girasol"></div>
+                        <div class="petalos">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="centro"></div>
+                    </div>
+                    <span class="burbuja-girasol" id="burbujaGirasol"></span>
+                </div>
+                <p class="pista-toque">Toca el girasol 🌻</p>
+
+                <div class="mensaje">
+                    <p class="frase-bonita">
+                        Eres bien chevere, gracias por estar en este mundo, gracias por estar siempre,
+                        por ser quien eres. Tu presencia convierte los días grises en días con luz
+                        y hace que el camino se sienta mucho más corto y relax.
+                    </p>
+
+                    <p class="frase-bonita">
+                        siempre puedes contar conmigo para lo que necesites.
+                    </p>
+
+                    <p class="firma">Criss :)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control de sonido -->
+        <button class="boton-sonido" onclick="alternarSonido(this)" title="Activar o desactivar el sonido">🔊</button>
+    </div>
+
+    <!-- Música: archivo local (offline) o YouTube como respaldo -->
+    <audio id="musicaAudio" src="musica.mp3" preload="auto" loop></audio>
+    <div id="reproductor-musica"></div>
+    <script>
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var primerScript = document.getElementsByTagName('script')[0];
+        primerScript.parentNode.insertBefore(tag, primerScript);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
