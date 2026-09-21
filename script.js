@@ -195,10 +195,10 @@ document.getElementById('nombreInput').addEventListener('keypress', function(e) 
 /* ============ GIRASOL ESQUIVO (troll) ============ */
 const MAX_INTENTOS = 20;
 const FRASES_ESQUIVA = [
-    '¡jeje!', '¡casi!', '¡no me tocas!', '¡soy más rápido!', '¡sigo aquí!',
-    '¡uy, te esquivé!', '¡velocidad ninja!', '¡sigue intentando!', '¡muy lento!', '¡ni de cerca!',
-    '¡otra vez?', '¡no te canses!', '¡casi me atrapas!', '¡prueba otra vez!', '¡de aquí no me sacas!',
-    '¡cada vez más cerca!', '¡bum, otro salto!', '¡soy escurridizo!', '¡casi! ¡sigue!', '¡ok, va la última!'
+    '¡jeje!', '¡por poquito!', '¡parale we!', '¡velocidad, soy veloz!', '¡sigo aquí!',
+    '¡ufff, te esquivé!', '¡velocidad ninja!', '¡sigue intentando!', '¡hechale ganas!', '¡jsjsjsjsj!',
+    '¡otra vez?', '¡tu puedes!', '¡casi me atrapas!', '¡te vas a rendir?', '¡naaaaa !',
+    '¡cada vez más cerca!', '¡bum, estoy aquí!', 'XD', '¡casi! ¡sigue!', '¡ok, ya me asustaste!'
 ];
 let intentosGirasol = 0;
 let timerBurbuja = null;
