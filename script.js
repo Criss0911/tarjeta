@@ -241,20 +241,20 @@ function dejarAtraparGirasol() {
 const girasol = document.querySelector('.girasol-principal');
 const girasolEsquivo = document.getElementById('girasolEsquivo');
 
-girasol.addEventListener('mouseenter', () => {
+girasolEsquivo.addEventListener('mouseenter', () => {
     if (intentosGirasol < MAX_INTENTOS) {
         esquivarGirasol();
     }
 });
 
-girasol.addEventListener('touchstart', (e) => {
+girasolEsquivo.addEventListener('touchstart', (e) => {
     if (intentosGirasol < MAX_INTENTOS) {
         e.preventDefault();
         esquivarGirasol();
     }
 });
 
-girasol.addEventListener('click', () => {
+girasolEsquivo.addEventListener('click', () => {
     if (intentosGirasol < MAX_INTENTOS) {
         esquivarGirasol();
         return;
