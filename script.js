@@ -325,7 +325,7 @@ function dejarAtraparGirasol() {
     document.body.classList.remove('modo-oscuro');
     document.getElementById('pantalla-tarjeta').classList.add('revelado');
     lanzarConfeti(50);
-    tocarMelodia();
+    setTimeout(tocarMelodia, 1000);
     mostrarBurbuja('¡Me atrapaste! 💛');
     girasol.classList.remove('pop');
     void girasol.offsetWidth;
