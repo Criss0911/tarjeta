@@ -362,7 +362,7 @@ body {
     z-index: 2;
 }
 
-/* Entrada escalonada del contenido */
+/* Entrada escalonada del contenido (se revela al atrapar el girasol) */
 .contenido-tarjeta > * {
     opacity: 0;
     transform: translateY(20px);
@@ -371,9 +371,16 @@ body {
         transform 0.55s ease calc(var(--entrada, 0ms));
 }
 
-.tarjeta.entra .contenido-tarjeta > * {
+#pantalla-tarjeta.revelado .contenido-tarjeta > * {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* El girasol y su pista siempre visibles (para poder atraparlo) */
+.contenido-tarjeta > .girasol-esquivo,
+.contenido-tarjeta > .pista-toque {
+    opacity: 1;
+    transform: none;
 }
 
 .contenido-tarjeta > *:nth-child(1)  { --entrada: 120ms; }
@@ -744,7 +751,20 @@ body {
     pointer-events: none;
 }
 
-/* Botón de sonido flotante */
+/* Botón de sonido flotante (oculto hasta atrapar el girasol) */
+#pantalla-tarjeta .boton-sonido {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.7);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+#pantalla-tarjeta.revelado .boton-sonido {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
 .boton-sonido {
     position: fixed;
     bottom: 22px;

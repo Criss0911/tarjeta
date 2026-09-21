@@ -194,8 +194,13 @@ document.getElementById('nombreInput').addEventListener('keypress', function(e) 
 });
 
 /* ============ GIRASOL ESQUIVO (troll) ============ */
-const MAX_INTENTOS = 15;
-const FRASES_ESQUIVA = ['¡jeje!', '¡casi!', '¡no me tocas!', '¡soy más rápido!', '¡sigo aquí!', '¡uy, te esquivé!', '¡velocidad girasol!', '¡sigue intentando!', '¡muy lento!', '¡ni de cerca!', '¡otra vez?', '¡no te canses!', '¡casi me atrapas!', '¡prueba otra vez!', '¡último intento... quizás!'];
+const MAX_INTENTOS = 20;
+const FRASES_ESQUIVA = [
+    '¡jeje!', '¡casi!', '¡no me tocas!', '¡soy más rápido!', '¡sigo aquí!',
+    '¡uy, te esquivé!', '¡velocidad girasol!', '¡sigue intentando!', '¡muy lento!', '¡ni de cerca!',
+    '¡otra vez?', '¡no te canses!', '¡casi me atrapas!', '¡prueba otra vez!', '¡de aquí no me sacas!',
+    '¡cada vez más cerca!', '¡bum, otro salto!', '¡soy escurridizo!', '¡casi! ¡sigue!', '¡ok, va la última!'
+];
 let intentosGirasol = 0;
 let timerBurbuja = null;
 
@@ -225,6 +230,7 @@ function esquivarGirasol() {
 function dejarAtraparGirasol() {
     const contenedor = document.getElementById('girasolEsquivo');
     if (contenedor) contenedor.style.transform = 'none';
+    document.getElementById('pantalla-tarjeta').classList.add('revelado');
     lanzarConfeti(50);
     tocarMelodia();
     mostrarBurbuja('¡Me atrapaste! 💛');
