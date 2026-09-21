@@ -562,8 +562,6 @@ body.modo-oscuro .girasol-principal {
     background: linear-gradient(180deg, #5a3d24 0%, #3a2512 60%, #24150a 100%);
     border-radius: 50% / 62%;
     box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.6),
-        0 0 18px rgba(245, 166, 35, 0.35),
         inset -3px 0 5px rgba(255, 255, 255, 0.10),
         inset 3px 0 4px rgba(0, 0, 0, 0.45);
     opacity: 0;
@@ -571,18 +569,6 @@ body.modo-oscuro .girasol-principal {
     cursor: pointer;
     transition: opacity 0.3s ease;
     animation: mecerSemilla 2.4s infinite ease-in-out;
-}
-
-.semilla-troll::before {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    width: 2px;
-    height: 80%;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 60%);
-    border-radius: 2px;
 }
 
 @keyframes mecerSemilla {
@@ -593,6 +579,15 @@ body.modo-oscuro .girasol-principal {
 body.modo-oscuro .semilla-troll {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* En el modo caza solo se ve la semilla: nada de burbujas ni flotantes */
+body.modo-oscuro .burbuja-girasol {
+    display: none;
+}
+
+body.modo-oscuro .flotantes-suaves {
+    display: none;
 }
 
 .burbuja-girasol {
