@@ -98,8 +98,12 @@ body {
 
 /* ============ MODO OSCURO (durante la caza del girasol) ============ */
 body.modo-oscuro {
-    background: #000000;
+    background: #000000 !important;
     overflow: hidden;
+}
+
+html.modo-oscuro {
+    background: #000000 !important;
 }
 
 body.modo-oscuro .camuflaje-bg {
@@ -422,6 +426,9 @@ body.modo-oscuro .girasol-principal {
 #pantalla-tarjeta.revelado .contenido-tarjeta > * {
     opacity: 1;
     transform: translateY(0);
+    transition:
+        opacity 0.55s ease,
+        transform 0.55s ease;
 }
 
 /* El girasol y su pista siempre visibles (para poder atraparlo) */
