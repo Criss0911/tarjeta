@@ -201,8 +201,28 @@ const FRASES_ESQUIVA = [
     '¡cada vez más cerca!', '¡bum, otro salto!', '¡soy escurridizo!', '¡casi! ¡sigue!', '¡ok, va la última!'
 ];
 let intentosGirasol = 0;
-let timerBurbuja = null;
 let ultimaPosicion = null;
+let esquinasPendientes = null;
+
+function barajarEsquinas() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const margen = Math.round(Math.min(vw, vh) * 0.05) + 14;
+    const w = 140;
+    const xFin = Math.max(vw - w, margen);
+    const yFin = Math.max(vh - w, margen);
+    const esquinas = [
+        [margen, margen],
+        [xFin, margen],
+        [margen, yFin],
+        [xFin, yFin]
+    ];
+    for (let i = esquinas.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [esquinas[i], esquinas[j]] = [esquinas[j], esquinas[i]];
+    }
+    esquinasPendientes = esquinas;
+}
 
 function posicionExtrema() {
     const vw = window.innerWidth;
@@ -211,15 +231,9 @@ function posicionExtrema() {
     const w = 140;
     const xFin = Math.max(vw - w, margen);
     const yFin = Math.max(vh - w, margen);
-    if (!ultimaPosicion) {
-        const esquinas = [
-            [margen, margen],
-            [xFin, margen],
-            [margen, yFin],
-            [xFin, yFin]
-        ];
-        return esquinas[Math.floor(Math.random() * esquinas.length)];
-    }
+    if (!esquinasPendientes) barajarEsquinas();
+    if (esquinasPendientes.length) return esquinasPendientes.shift();
+    if (!ultimaPosicion) return [margen, margen];
     const [ox, oy] = ultimaPosicion;
     const tx = ox < vw / 2 ? xFin : margen;
     const ty = oy < vh / 2 ? yFin : margen;
@@ -236,8 +250,6 @@ function mostrarBurbuja(texto) {
     burbuja.classList.remove('visible');
     void burbuja.offsetWidth;
     burbuja.classList.add('visible');
-    clearTimeout(timerBurbuja);
-    timerBurbuja = setTimeout(() => burbuja.classList.remove('visible'), 1100);
 }
 
 function esquivarGirasol() {
@@ -257,8 +269,13 @@ function esquivarGirasol() {
 
 function dejarAtraparGirasol() {
     ultimaPosicion = null;
+    esquinasPendientes = null;
     const contenedor = document.getElementById('girasolEsquivo');
-    if (contenedor) contenedor.style.transform = '';
+    if (contenedor) {
+        contenedor.style.transform = '';
+        contenedor.style.left = '';
+        contenedor.style.top = '';
+    }
     document.documentElement.classList.remove('modo-oscuro');
     document.body.classList.remove('modo-oscuro');
     document.getElementById('pantalla-tarjeta').classList.add('revelado');
