@@ -96,6 +96,26 @@ body {
     50% { opacity: 1.15; }
 }
 
+/* ============ MODO OSCURO (durante la caza del girasol) ============ */
+body.modo-oscuro {
+    background: #0a1208;
+}
+
+body.modo-oscuro .camuflaje-bg {
+    background:
+        radial-gradient(ellipse at 50% 58%, rgba(245, 166, 35, 0.10) 0%, transparent 50%),
+        linear-gradient(160deg, #0e1810 0%, #0a0f08 100%);
+    animation: none;
+}
+
+body.modo-oscuro .resplandor {
+    opacity: 0.25;
+}
+
+body.modo-oscuro .flotantes-suaves span {
+    opacity: 0;
+}
+
 /* ============ CONTENEDORES ============ */
 .contenedor {
     display: none;

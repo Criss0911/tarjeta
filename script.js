@@ -11,6 +11,7 @@ function activarPantallaTarjeta() {
     document.getElementById('pantalla-inicio').classList.remove('activo');
     const pantalla = document.getElementById('pantalla-tarjeta');
     pantalla.classList.add('activo');
+    document.body.classList.add('modo-oscuro');
     const tarjeta = pantalla.querySelector('.tarjeta');
     tarjeta.classList.remove('entra');
     void tarjeta.offsetWidth;
@@ -227,6 +228,7 @@ function esquivarGirasol() {
 function dejarAtraparGirasol() {
     const contenedor = document.getElementById('girasolEsquivo');
     if (contenedor) contenedor.style.transform = 'none';
+    document.body.classList.remove('modo-oscuro');
     document.getElementById('pantalla-tarjeta').classList.add('revelado');
     lanzarConfeti(50);
     tocarMelodia();
