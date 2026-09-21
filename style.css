@@ -112,7 +112,7 @@ body.modo-oscuro .camuflaje-bg {
 }
 
 body.modo-oscuro .resplandor {
-    opacity: 0;
+    display: none;
 }
 
 body.modo-oscuro .flotantes-suaves span {
@@ -142,10 +142,6 @@ body.modo-oscuro .cinta-camuflaje {
 }
 
 body.modo-oscuro .flotantes-suaves {
-    display: none;
-}
-
-body.modo-oscuro .burbuja-girasol {
     display: none;
 }
 
