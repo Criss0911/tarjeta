@@ -135,6 +135,16 @@ body.modo-oscuro .esquina-girasol {
     opacity: 0;
 }
 
+body.modo-oscuro .jardin-fondo,
+body.modo-oscuro .particulas,
+body.modo-oscuro .cinta-camuflaje {
+    display: none;
+}
+
+body.modo-oscuro .flotantes-suaves {
+    display: none;
+}
+
 body.modo-oscuro .girasol-esquivo {
     position: fixed;
     top: 50%;
