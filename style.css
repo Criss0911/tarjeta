@@ -562,6 +562,8 @@ body.modo-oscuro .girasol-principal {
     background: linear-gradient(180deg, #5a3d24 0%, #3a2512 60%, #24150a 100%);
     border-radius: 50% / 62%;
     box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(245, 166, 35, 0.35),
         inset -3px 0 5px rgba(255, 255, 255, 0.10),
         inset 3px 0 4px rgba(0, 0, 0, 0.45);
     opacity: 0;
@@ -591,10 +593,6 @@ body.modo-oscuro .girasol-principal {
 body.modo-oscuro .semilla-troll {
     opacity: 1;
     pointer-events: auto;
-}
-
-body.modo-oscuro .burbuja-girasol {
-    display: none;
 }
 
 .burbuja-girasol {
