@@ -39,9 +39,6 @@ function mostrarTarjeta() {
 
     activarPantallaTarjeta();
 
-    lanzarConfeti(90);
-    tocarMelodia();
-
     const url = new URL(window.location);
     url.searchParams.set('nombre', nombre);
     window.history.replaceState({}, '', url);
