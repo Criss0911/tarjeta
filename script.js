@@ -202,6 +202,32 @@ const FRASES_ESQUIVA = [
 ];
 let intentosGirasol = 0;
 let timerBurbuja = null;
+let ultimaPosicion = null;
+
+function posicionExtrema() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const margen = Math.round(Math.min(vw, vh) * 0.05) + 14;
+    const w = 140;
+    const xFin = Math.max(vw - w, margen);
+    const yFin = Math.max(vh - w, margen);
+    if (!ultimaPosicion) {
+        const esquinas = [
+            [margen, margen],
+            [xFin, margen],
+            [margen, yFin],
+            [xFin, yFin]
+        ];
+        return esquinas[Math.floor(Math.random() * esquinas.length)];
+    }
+    const [ox, oy] = ultimaPosicion;
+    const tx = ox < vw / 2 ? xFin : margen;
+    const ty = oy < vh / 2 ? yFin : margen;
+    const doblar = Math.random();
+    if (doblar < 0.45) return [tx, Math.round(margen + Math.random() * (yFin - margen))];
+    if (doblar < 0.9) return [Math.round(margen + Math.random() * (xFin - margen)), ty];
+    return [tx, ty];
+}
 
 function mostrarBurbuja(texto) {
     const burbuja = document.getElementById('burbujaGirasol');
@@ -220,13 +246,17 @@ function esquivarGirasol() {
     mostrarBurbuja(FRASES_ESQUIVA[(intentosGirasol - 1) % FRASES_ESQUIVA.length]);
     const contenedor = document.getElementById('girasolEsquivo');
     if (!contenedor) return;
-    const dX = Math.round(Math.random() * 300 - 150);
-    const dY = Math.round(Math.random() * 220 - 60);
-    const rot = Math.round(Math.random() * 40 - 20);
-    contenedor.style.transform = `translate(calc(-50% + ${dX}px), calc(-50% + ${dY}px)) rotate(${rot}deg)`;
+    const [nx, ny] = posicionExtrema();
+    ultimaPosicion = [nx, ny];
+    const rot = Math.round(Math.random() * 50 - 25);
+    const salto = Math.random() < 0.2 ? 'scale(1.3)' : 'scale(0.9)';
+    contenedor.style.left = nx + 'px';
+    contenedor.style.top = ny + 'px';
+    contenedor.style.transform = `translate(-50%, -50%) rotate(${rot}deg) ${salto}`;
 }
 
 function dejarAtraparGirasol() {
+    ultimaPosicion = null;
     const contenedor = document.getElementById('girasolEsquivo');
     if (contenedor) contenedor.style.transform = '';
     document.documentElement.classList.remove('modo-oscuro');
@@ -263,6 +293,36 @@ girasolEsquivo.addEventListener('click', () => {
     }
     dejarAtraparGirasol();
 });
+
+function semillaEnModoCaza() {
+    return document.body.classList.contains('modo-oscuro') && intentosGirasol < MAX_INTENTOS;
+}
+
+window.addEventListener('mousemove', (e) => {
+    if (!semillaEnModoCaza()) return;
+    const contenedor = document.getElementById('girasolEsquivo');
+    if (!contenedor) return;
+    const rect = contenedor.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    if (Math.hypot(e.clientX - cx, e.clientY - cy) < 130) {
+        esquivarGirasol();
+    }
+});
+
+window.addEventListener('touchmove', (e) => {
+    if (!semillaEnModoCaza() || !e.touches.length) return;
+    const contenedor = document.getElementById('girasolEsquivo');
+    if (!contenedor) return;
+    const rect = contenedor.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const t = e.touches[0];
+    if (Math.hypot(t.clientX - cx, t.clientY - cy) < 130) {
+        e.preventDefault();
+        esquivarGirasol();
+    }
+}, { passive: false });
 
 window.addEventListener('DOMContentLoaded', () => {
     iniciarAudioLocal();

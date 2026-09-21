@@ -156,6 +156,10 @@ body.modo-oscuro .girasol-esquivo {
     margin: 0;
     width: 120px;
     height: 120px;
+    transition:
+        left 0.32s cubic-bezier(0.2, 1.4, 0.4, 1),
+        top 0.32s cubic-bezier(0.2, 1.4, 0.4, 1),
+        transform 0.22s ease;
 }
 
 body.modo-oscuro .girasol-principal {
