@@ -145,6 +145,14 @@ body.modo-oscuro .flotantes-suaves {
     display: none;
 }
 
+body.modo-oscuro .burbuja-girasol {
+    display: none;
+}
+
+body.modo-oscuro .tarjeta::before {
+    display: none;
+}
+
 body.modo-oscuro .girasol-esquivo {
     position: fixed;
     top: 50%;
