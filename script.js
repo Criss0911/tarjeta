@@ -283,7 +283,7 @@ function mostrarBurbuja(texto) {
     void burbuja.offsetWidth;
     burbuja.classList.add('visible');
     clearTimeout(timerBurbuja);
-    timerBurbuja = setTimeout(() => burbuja.classList.remove('visible'), 1500);
+    timerBurbuja = setTimeout(() => burbuja.classList.remove('visible'), 2000);
 }
 
 function esquivarGirasol() {
