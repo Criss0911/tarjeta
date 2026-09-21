@@ -1,7 +1,7 @@
 const COLORES_CONFETI = ['#ffd93b', '#f5a623', '#e08b00', '#ffe066', '#fff3a0', '#8bc34a'];
 
-const VIDEO_ID = 'S7gMzYqXIZc';
-const TIEMPO_INICIO = 46;
+const VIDEO_ID = 'R533DDds3RY';
+const TIEMPO_INICIO = 35;
 const FIN_BUCLE = TIEMPO_INICIO + 30;
 let sonidoActivo = true;
 let reproductor = null;
@@ -195,10 +195,10 @@ document.getElementById('nombreInput').addEventListener('keypress', function(e) 
 /* ============ GIRASOL ESQUIVO (troll) ============ */
 const MAX_INTENTOS = 20;
 const FRASES_ESQUIVA = [
-    '¡jeje!', '¡por poquito!', '¡parale we!', '¡velocidad, soy veloz!', '¡sigo aquí!',
-    '¡ufff, te esquivé!', '¡velocidad ninja!', '¡sigue intentando!', '¡hechale ganas!', '¡jsjsjsjsj!',
-    '¡otra vez?', '¡tu puedes!', '¡casi me atrapas!', '¡te vas a rendir?', '¡naaaaa !',
-    '¡cada vez más cerca!', '¡bum, estoy aquí!', 'XD', '¡casi! ¡sigue!', '¡ok, ya me asustaste!'
+    '¡uhhhhh !', '¡que tienes we?', '¡parale we!', '¡velocidad, soy veloz!', '¡por aquí!',
+    '¡fiuuuu...!', '¡wasaaaaaa....!', '¡hey eso duele!', '¡con mas ñeque!', '¡jsjsjsjsj!',
+    '¡otra vez?', '¡tu puedes!', '¡......!', '¡te vas a rendir?', '¡naaaaa !',
+    '¡que panso?!', '¡esquivo, esquivo!', ' XD ', '¡!', '¡ok, ya me asustaste!'
 ];
 let intentosGirasol = 0;
 let timerBurbuja = null;
