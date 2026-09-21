@@ -99,6 +99,7 @@ body {
 /* ============ MODO OSCURO (durante la caza del girasol) ============ */
 body.modo-oscuro {
     background: #000000;
+    overflow: hidden;
 }
 
 body.modo-oscuro .camuflaje-bg {
@@ -128,6 +129,13 @@ body.modo-oscuro .tarjeta {
 
 body.modo-oscuro .esquina-girasol {
     opacity: 0;
+}
+
+body.modo-oscuro .girasol-esquivo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: 0;
 }
 
 /* ============ CONTENEDORES ============ */

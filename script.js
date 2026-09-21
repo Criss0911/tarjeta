@@ -222,12 +222,12 @@ function esquivarGirasol() {
     const dX = Math.round(Math.random() * 300 - 150);
     const dY = Math.round(Math.random() * 220 - 60);
     const rot = Math.round(Math.random() * 40 - 20);
-    contenedor.style.transform = `translate(${dX}px, ${dY}px) rotate(${rot}deg)`;
+    contenedor.style.transform = `translate(calc(-50% + ${dX}px), calc(-50% + ${dY}px)) rotate(${rot}deg)`;
 }
 
 function dejarAtraparGirasol() {
     const contenedor = document.getElementById('girasolEsquivo');
-    if (contenedor) contenedor.style.transform = 'none';
+    if (contenedor) contenedor.style.transform = '';
     document.body.classList.remove('modo-oscuro');
     document.getElementById('pantalla-tarjeta').classList.add('revelado');
     lanzarConfeti(50);
