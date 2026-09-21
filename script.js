@@ -202,15 +202,16 @@ const FRASES_ESQUIVA = [
 ];
 let intentosGirasol = 0;
 let ultimaPosicion = null;
-let esquinasPendientes = null;
+let planEsquinas = null;
+let esquinasLista = null;
+let idxCorner = 0;
 
-function barajarEsquinas() {
+function esquinasAleatorias() {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const margen = Math.round(Math.min(vw, vh) * 0.05) + 14;
-    const w = 140;
-    const xFin = Math.max(vw - w, margen);
-    const yFin = Math.max(vh - w, margen);
+    const xFin = Math.max(vw - 150, margen);
+    const yFin = Math.max(vh - 150, margen);
     const esquinas = [
         [margen, margen],
         [xFin, margen],
@@ -221,7 +222,19 @@ function barajarEsquinas() {
         const j = Math.floor(Math.random() * (i + 1));
         [esquinas[i], esquinas[j]] = [esquinas[j], esquinas[i]];
     }
-    esquinasPendientes = esquinas;
+    return esquinas;
+}
+
+function prepararPlanEsquinas() {
+    const posiciones = [];
+    for (let i = 1; i <= MAX_INTENTOS; i++) posiciones.push(i);
+    for (let i = posiciones.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [posiciones[i], posiciones[j]] = [posiciones[j], posiciones[i]];
+    }
+    planEsquinas = posiciones.slice(0, 4).sort((a, b) => a - b);
+    esquinasLista = esquinasAleatorias();
+    idxCorner = 0;
 }
 
 function posicionExtrema() {
@@ -231,8 +244,6 @@ function posicionExtrema() {
     const w = 140;
     const xFin = Math.max(vw - w, margen);
     const yFin = Math.max(vh - w, margen);
-    if (!esquinasPendientes) barajarEsquinas();
-    if (esquinasPendientes.length) return esquinasPendientes.shift();
     if (!ultimaPosicion) return [margen, margen];
     const [ox, oy] = ultimaPosicion;
     const tx = ox < vw / 2 ? xFin : margen;
@@ -241,6 +252,26 @@ function posicionExtrema() {
     if (doblar < 0.45) return [tx, Math.round(margen + Math.random() * (yFin - margen))];
     if (doblar < 0.9) return [Math.round(margen + Math.random() * (xFin - margen)), ty];
     return [tx, ty];
+}
+
+function ajustarDentroDePantalla(nx, ny) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const burbuja = document.getElementById('burbujaGirasol');
+    if (burbuja) {
+        const bw = burbuja.offsetWidth || 0;
+        const bh = burbuja.offsetHeight || 0;
+        const L = nx - bw / 2;
+        const T = ny - 96;
+        if (L < 4) nx += 4 - L;
+        if (L + bw > vw - 4) nx += vw - 4 - (L + bw);
+        if (T < 4) ny += 4 - T;
+        if (T + bh > vh - 4) ny += vh - 4 - (T + bh);
+    }
+    return [
+        Math.max(4, Math.min(nx, vw - 124)),
+        Math.max(4, Math.min(ny, vh - 124))
+    ];
 }
 
 function mostrarBurbuja(texto) {
@@ -258,7 +289,16 @@ function esquivarGirasol() {
     mostrarBurbuja(FRASES_ESQUIVA[(intentosGirasol - 1) % FRASES_ESQUIVA.length]);
     const contenedor = document.getElementById('girasolEsquivo');
     if (!contenedor) return;
-    const [nx, ny] = posicionExtrema();
+    if (!planEsquinas) prepararPlanEsquinas();
+    let nx;
+    let ny;
+    if (idxCorner < planEsquinas.length && planEsquinas[idxCorner] === intentosGirasol) {
+        [nx, ny] = esquinasLista[idxCorner];
+        idxCorner += 1;
+    } else {
+        [nx, ny] = posicionExtrema();
+    }
+    [nx, ny] = ajustarDentroDePantalla(nx, ny);
     ultimaPosicion = [nx, ny];
     const rot = Math.round(Math.random() * 50 - 25);
     const salto = Math.random() < 0.2 ? 'scale(1.3)' : 'scale(0.9)';
@@ -269,7 +309,9 @@ function esquivarGirasol() {
 
 function dejarAtraparGirasol() {
     ultimaPosicion = null;
-    esquinasPendientes = null;
+    planEsquinas = null;
+    esquinasLista = null;
+    idxCorner = 0;
     const contenedor = document.getElementById('girasolEsquivo');
     if (contenedor) {
         contenedor.style.transform = '';
