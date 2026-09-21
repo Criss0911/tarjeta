@@ -757,6 +757,10 @@ body.modo-oscuro .semilla-troll {
     margin: 6px 0 4px;
 }
 
+#pantalla-tarjeta.revelado .pista-toque {
+    display: none;
+}
+
 /* ============ MENSAJE ============ */
 .mensaje {
     margin: 26px 0 22px;

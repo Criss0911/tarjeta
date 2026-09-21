@@ -196,7 +196,7 @@ document.getElementById('nombreInput').addEventListener('keypress', function(e) 
 const MAX_INTENTOS = 20;
 const FRASES_ESQUIVA = [
     '¡jeje!', '¡casi!', '¡no me tocas!', '¡soy más rápido!', '¡sigo aquí!',
-    '¡uy, te esquivé!', '¡velocidad girasol!', '¡sigue intentando!', '¡muy lento!', '¡ni de cerca!',
+    '¡uy, te esquivé!', '¡velocidad ninja!', '¡sigue intentando!', '¡muy lento!', '¡ni de cerca!',
     '¡otra vez?', '¡no te canses!', '¡casi me atrapas!', '¡prueba otra vez!', '¡de aquí no me sacas!',
     '¡cada vez más cerca!', '¡bum, otro salto!', '¡soy escurridizo!', '¡casi! ¡sigue!', '¡ok, va la última!'
 ];
