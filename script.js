@@ -198,7 +198,7 @@ const FRASES_ESQUIVA = [
     '¡uhhhhh !', '¡que tienes we?', '¡parale we!', '¡velocidad, soy veloz!', '¡por aquí!',
     '¡fiuuuu...!', '¡wasaaaaaa....!', '¡hey eso duele!', '¡con mas ñeque!', '¡jsjsjsjsj!',
     '¡otra vez?', '¡tu puedes!', '¡......!', '¡te vas a rendir?', '¡naaaaa !',
-    '¡que panso?!', '¡esquivo, esquivo!', ' XD ', '¡!', '¡ok, ya me asustaste!'
+    '¡que panso?!', '¡esquivo, esquivo!', ' XD ', '¡are you ready?', '¡ok, ya me asustaste!'
 ];
 let intentosGirasol = 0;
 let timerBurbuja = null;
