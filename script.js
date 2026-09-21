@@ -201,6 +201,7 @@ const FRASES_ESQUIVA = [
     '¡cada vez más cerca!', '¡bum, otro salto!', '¡soy escurridizo!', '¡casi! ¡sigue!', '¡ok, va la última!'
 ];
 let intentosGirasol = 0;
+let timerBurbuja = null;
 let ultimaPosicion = null;
 let planEsquinas = null;
 let esquinasLista = null;
@@ -281,6 +282,8 @@ function mostrarBurbuja(texto) {
     burbuja.classList.remove('visible');
     void burbuja.offsetWidth;
     burbuja.classList.add('visible');
+    clearTimeout(timerBurbuja);
+    timerBurbuja = setTimeout(() => burbuja.classList.remove('visible'), 1000);
 }
 
 function esquivarGirasol() {
